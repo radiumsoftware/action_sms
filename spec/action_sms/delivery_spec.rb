@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Sending SMS' do
   it "should deliver the message with the gateway when using http" do
-    ActionSms::Base.delivery_method = :http
+    ActionSMS::Base.delivery_method = :http
 
     sms = SmsMan.create_simple_message
 
@@ -12,17 +12,17 @@ describe 'Sending SMS' do
   end
 
   it "should store the messages in the deliveries array when using test mode" do
-    ActionSms::Base.delivery_method = :test
+    ActionSMS::Base.delivery_method = :test
 
     sms = SmsMan.deliver_simple_message
 
-    ActionSms::Base.deliveries.should include(sms)
+    ActionSMS::Base.deliveries.should include(sms)
   end
 
 
   it "should catch raise errors when configured" do
-    ActionSms::Base.raise_delivery_errors = true
-    ActionSms::Base.delivery_method = :http
+    ActionSMS::Base.raise_delivery_errors = true
+    ActionSMS::Base.delivery_method = :http
 
     sms = SmsMan.create_simple_message
 

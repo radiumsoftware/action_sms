@@ -1,6 +1,6 @@
 require 'net/http'
 
-module ActionSms
+module ActionSMS
   module Gateways
 
     class Labyrintti < Gateway
@@ -21,8 +21,8 @@ module ActionSms
         when /OK/
           # nothing sending successfull
         when /Error/i
-          raise ActionSms::GatewayError, response.body
-        else raise ActionSms::GatewayError, "Failed for an unknown reason. Gateway returned: #{response.body}"
+          raise ActionSMS::GatewayError, response.body
+        else raise ActionSMS::GatewayError, "Failed for an unknown reason. Gateway returned: #{response.body}"
         end
 
         message.gateway_response = response.body

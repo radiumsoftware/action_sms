@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe ActionSms::Matchers do
-  subject { mock(ActionSms::Message, :to => '1234', :from => '5678', :text => 'example') }
+describe ActionSMS::Matchers do
+  subject { mock(ActionSMS::Message, :to => '1234', :from => '5678', :text => 'example') }
 
   it { should send_to('1234') }
   it { should_not send_to('123489791238') }

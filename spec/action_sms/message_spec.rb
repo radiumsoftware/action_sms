@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe ActionSms::Message do
+describe ActionSMS::Message do
   describe '#initialize' do
-    subject { ActionSms::Message.new :to => '1234', :from => '5678', :text => 'example' }
+    subject { ActionSMS::Message.new :to => '1234', :from => '5678', :text => 'example' }
 
     it "should set the to number" do
       subject.to.should eql('1234')
@@ -19,11 +19,11 @@ describe ActionSms::Message do
 
   it "should set the gateway from the country code" do
     subject.gateway = :fi
-    subject.gateway.should eql(ActionSms::Gateways::Labyrintti)
+    subject.gateway.should eql(ActionSMS::Gateways::Labyrintti)
   end
 
   it "should delegate #deliver to #gateway" do
-    subject.stub :gateway => mock(ActionSms::Gateway)
+    subject.stub :gateway => mock(ActionSMS::Gateway)
     subject.gateway.should_receive(:deliver).with(subject)
     subject.deliver
   end

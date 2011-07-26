@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-class SmsMan < ActionSms::Base
+class SmsMan < ActionSMS::Base
   def simple_message
     to '1234-567'
     from '567-8910'
@@ -24,7 +24,7 @@ class SmsMan < ActionSms::Base
   end
 end
 
-describe ActionSms::Base do
+describe ActionSMS::Base do
   subject { SmsMan }
 
   it "should be able to build new messages" do

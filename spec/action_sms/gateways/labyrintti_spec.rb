@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe ActionSms::Gateways::Labyrintti do
+describe ActionSMS::Gateways::Labyrintti do
   before(:each) do
-    ActionSms.configuration = {
+    ActionSMS::Base.gateway_configuration = {
       'labyrintti' => {'user' => 'user', 'password' => 'password'}
     }
   end
 
-  subject { ActionSms::Gateways::Labyrintti }
+  subject { ActionSMS::Gateways::Labyrintti }
 
   let(:message) do
-    mock(ActionSms::Message, :to => '1234', :from => '5678', :text => 'hi').as_null_object
+    mock(ActionSMS::Message, :to => '1234', :from => '5678', :text => 'hi').as_null_object
   end
 
   it "should do a post to the gateway url" do
@@ -36,13 +36,13 @@ describe ActionSms::Gateways::Labyrintti do
     stub_request(:post, 'http://gw.labyrintti.com:28080/sendsms').
       to_return(:body => 'ERROR: error description')
 
-    lambda { subject.deliver(message) }.should raise_error(ActionSms::GatewayError)
+    lambda { subject.deliver(message) }.should raise_error(ActionSMS::GatewayError)
   end
 
   it "should raise an error if the gateway returns an unknown format" do
     stub_request(:post, 'http://gw.labyrintti.com:28080/sendsms').
       to_return(:body => 'somtimes these things happen')
 
-    lambda { subject.deliver(message) }.should raise_error(ActionSms::GatewayError)
+    lambda { subject.deliver(message) }.should raise_error(ActionSMS::GatewayError)
   end
 end

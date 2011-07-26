@@ -4,7 +4,7 @@ require "action_sms/version"
 
 Gem::Specification.new do |s|
   s.name        = "action_sms"
-  s.version     = ActionSms::VERSION
+  s.version     = ActionSMS::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Adam Hawkins"]
   s.email       = ["adam@radiumcrm.com"]

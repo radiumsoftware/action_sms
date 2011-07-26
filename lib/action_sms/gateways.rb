@@ -1,4 +1,4 @@
-module ActionSms
+module ActionSMS
   module Gateways
     autoload :Labyrintti, 'action_sms/gateways/labyrintti'
 

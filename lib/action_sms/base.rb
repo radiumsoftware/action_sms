@@ -1,8 +1,11 @@
 require 'action_mailer'
 
-module ActionSms
+module ActionSMS
   class Base < ActionMailer::Base
     @@delivery_method = :http
+
+    @@gateway_configuration = {}
+    cattr_accessor :gateway_configuration
 
     adv_attr_accessor :to
     adv_attr_accessor :from
