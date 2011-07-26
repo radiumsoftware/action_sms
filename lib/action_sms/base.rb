@@ -13,6 +13,16 @@ module ActionSMS
 
     attr_reader :sms
 
+    @@sms_deliveries = []
+
+    def self.deliveries
+      @@sms_deliveries
+    end
+
+    def self.deliveries=(obj)
+      @@sms_deliveries = obj
+    end
+
     # Initialize the mailer via the given +method_name+. The body will be
     # rendered and a new SMS::Message object created.
     def create!(method_name, *parameters) #:nodoc:
@@ -91,7 +101,7 @@ module ActionSMS
     end
 
     def perform_delivery_test(sms)
-      deliveries << sms
+      ActionSMS::Base.deliveries << sms
     end
   end
 end
