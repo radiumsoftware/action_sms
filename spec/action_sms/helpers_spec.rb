@@ -1,24 +1,24 @@
 require 'spec_helper'
 
 class HelperTestSubject
-  include SMS::Helpers
+  include ActionSms::Helpers
 end
 
-describe SMS::Helpers do
+describe ActionSms::Helpers do
   subject { HelperTestSubject.new }
 
   let(:message) {
-    mock(SMS::Message, :to => '1234', :from => '5678', :text => 'example')
+    mock(ActionSms::Message, :to => '1234', :from => '5678', :text => 'example')
   }
 
   before(:each) do
-    SMS.deliveries.clear
-    SMS.deliveries << message
+    ActionSms::Base.deliveries.clear
+    ActionSms::Base.deliveries << message
   end
 
   describe '#sms_messages' do
-    it 'should return the SMS.deliveries array' do
-      subject.sms_messages.should eql([message])
+    it 'should return the ActionSms::Base.deliveries deliveries array' do
+      subject.sms_messages.should eql(ActionSms::Base.deliveries)
     end
   end
 

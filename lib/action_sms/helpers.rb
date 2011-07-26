@@ -1,11 +1,11 @@
-module SMS
+module ActionSms
   module Helpers
     def current_sms_message
       sms_messages.last
     end
 
     def sms_messages
-      SMS.deliveries
+      ActionSms::Base.deliveries
     end
 
     def sms_messages_sent_to(to)

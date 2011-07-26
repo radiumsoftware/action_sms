@@ -1,4 +1,4 @@
-module SMS
+module ActionSms
   class Message
     attr_accessor :to, :from, :text, :gateway_response
     attr_reader :gateway

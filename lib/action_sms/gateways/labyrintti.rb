@@ -1,9 +1,9 @@
 require 'net/http'
 
-module SMS
+module ActionSms
   module Gateways
 
-    class Labyrintti < SMS::Gateway
+    class Labyrintti < Gateway
 
       URL = "http://gw.labyrintti.com:28080/sendsms"
 
@@ -21,8 +21,8 @@ module SMS
         when /OK/
           # nothing sending successfull
         when /Error/i
-          raise SMS::GatewayError, response.body
-        else raise SMS::GatewayError, "Failed for an unknown reason. Gateway returned: #{response.body}"
+          raise ActionSms::GatewayError, response.body
+        else raise ActionSms::GatewayError, "Failed for an unknown reason. Gateway returned: #{response.body}"
         end
 
         message.gateway_response = response.body

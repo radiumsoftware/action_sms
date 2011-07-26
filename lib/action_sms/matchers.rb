@@ -1,4 +1,4 @@
-module SMS
+module ActionSms
   module Matchers
 
     class SendTo
