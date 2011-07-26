@@ -19,7 +19,6 @@ describe 'Sending SMS' do
     ActionSMS::Base.deliveries.should include(sms)
   end
 
-
   it "should catch raise errors when configured" do
     ActionSMS::Base.raise_delivery_errors = true
     ActionSMS::Base.delivery_method = :http
@@ -31,5 +30,15 @@ describe 'Sending SMS' do
     lambda { 
       SmsMan.deliver(sms)
     }.should raise_error(StandardError, 'Example error')
+  end
+
+  it "should not add deliveries to action mailer's deliveries" do
+    ActionSMS::Base.deliveries << 1
+    ActionMailer::Base.deliveries.should_not include(1)
+  end
+
+  it "should not use deliveries added to action mailer" do
+    ActionMailer::Base.deliveries << 1
+    ActionSMS::Base.deliveries.should_not include(1)
   end
 end
