@@ -3,7 +3,7 @@ module ActionSMS
     autoload :Labyrintti, 'action_sms/gateways/labyrintti'
 
     MAP = {
-      :fi => Labyrintti
+      '358' => Labyrintti
     }
 
   end

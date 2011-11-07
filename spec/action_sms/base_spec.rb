@@ -44,3 +44,15 @@ describe ActionSMS::Base do
     sms.text.should include('Template instance variable')
   end
 end
+
+describe ActionSMS::Base do
+  it "should not be affected by ActionMailer::Base.delivery_method" do
+    ActionMailer::Base.delivery_method = :sendmail
+    ActionSMS::Base.delivery_method.should_not eql(:send_mail)
+  end
+
+  it "should not affect ActionMailer::Base.delivery_method" do
+    ActionSMS::Base.delivery_method = :http
+    ActionMailer::Base.delivery_method.should_not eql(:http)
+  end
+end

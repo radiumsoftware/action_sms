@@ -18,7 +18,7 @@ describe ActionSMS::Message do
   end
 
   it "should set the gateway from the country code" do
-    subject.gateway = :fi
+    subject.to = "+3582348130"
     subject.gateway.should eql(ActionSMS::Gateways::Labyrintti)
   end
 
